@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import * as bcrypt from 'bcrypt';
 import prisma from "../lib/prisma.js";
 export const register = async (req, res) => {
   try {
@@ -29,14 +29,17 @@ export const login = async (req, res) => {
     const user = await prisma.user.findUnique({
       where: { username },
     });
+    console.log(user.password)
+    console.log(password)
 
-    if (!user) return res.status(401).json({ message: "Invalid Credential" });
+    if (!user) return res.status(401).json({ message: "Invalid Credential-User" });
 
     // Check the password
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) return res.status(401).json({ message: "Invalid Credential!" });
+    if (!isPasswordValid) return res.status(401).json({ message: "Invalid Credential!-Password" });
 
     // Generate Cookie token and send it to user
+    res.setHeader("Set-Cookies", "text=" + "myValue").json("success")
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Failed to login" });
