@@ -2,6 +2,8 @@ import Navbar from "./components/navbar/Navbar"
 import HomePage from "./routes/homePage/homePage"
 import Layout from "./routes/layout/Layout";
 import ListPage from "./routes/listPage/ListPage";
+import Register from "./routes/register/Register";
+import Login from "./routes/login/Login"
 import {
   createBrowserRouter,
   RouterProvider,
@@ -31,6 +33,14 @@ function App() {
           path:"/profile",
           element:<ProfilePage/>
         },
+        {
+          path:"/login",
+          element:<Login/>
+        },
+        {
+          path:"/register",
+          element:<Register/>
+        }
       ]
     },
   ]);
