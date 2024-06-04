@@ -72,14 +72,20 @@ nav{
             }
             .profile{
                 padding: 12px 24px;
-                background-color: #fcf5f3;
+                background-color: #fece51;
                 cursor: pointer;
                 border: none;
             }
         }
         .register{
-            background-color: #fece51;
+            align-items: center;
             cursor: pointer;
+            width: max-content;
+        }
+        .login{
+            align-items: center;
+            cursor: pointer;
+            width: max-content;
         }
         .menuIcon{
             display: none;
