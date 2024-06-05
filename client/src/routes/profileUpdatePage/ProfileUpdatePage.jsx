@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import "./profileUpdatePage.scss";
-import { AuthContext } from "../../context/AuthContext";
-import apiRequest from "../../lib/apiRequest";
+import { AuthContext } from "../../context/AuthContext.jsx";
+import apiRequest from "../../lib/apiRequest.js";
 import { useNavigate } from "react-router-dom";
-// import UploadWidget from "../../components/uploadWidget/UploadWidget";
+import UploadWidget from "../../components/uploadWidget/uploadWidget.jsx";
 
 function ProfileUpdatePage() {
   const { currentUser, updateUser } = useContext(AuthContext);
@@ -17,14 +17,15 @@ function ProfileUpdatePage() {
     const formData = new FormData(e.target);
 
     const { username, email, password } = Object.fromEntries(formData);
-
+  
     try {
       const res = await apiRequest.put(`/users/${currentUser.id}`, {
         username,
         email,
         password,
-        avatar: avatar[0],
-      });
+        avatar: avatar[0],   
+      },
+    );
       updateUser(res.data);
       navigate("/profile");
     } catch (err) {
@@ -70,16 +71,16 @@ function ProfileUpdatePage() {
           alt=""
           className="avatar"
         />
-        {/* <UploadWidget
+        <UploadWidget
           uwConfig={{
-            cloudName: "Harshal",
+            cloudName: "dnhcbjzf0",
             uploadPreset: "estate",
             multiple: false,
             maxImageFileSize: 2000000,
             folder: "avatars",
           }}
           setState={setAvatar}
-        /> */}
+        />
       </div>
     </div>
   );
