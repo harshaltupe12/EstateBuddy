@@ -24,12 +24,15 @@ function ProfileUpdatePage() {
         email,
         password,
         avatar: avatar[0],   
-      },
+        },
     );
-      updateUser(res.data);
+      updateUser(res.data.userInfo);
       navigate("/profile");
     } catch (err) {
       console.log(err);
+      if(err.response.message === "Token is not Valid!"){
+        localStorage.removeItem("token")
+      }
       setError(err.response.data.message);
     }
   };
