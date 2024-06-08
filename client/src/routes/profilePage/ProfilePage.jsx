@@ -15,6 +15,7 @@ function ProfilePage() {
       await apiRequest.post("/auth/logout");
       updateUser(null);
       navigate("/");
+      localStorage.removeItem("token")
     } catch (err) {
       console.log(err);
     }
