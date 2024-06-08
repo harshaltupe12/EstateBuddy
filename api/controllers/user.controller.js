@@ -27,8 +27,12 @@ export const getUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   const id = req.params.id;
+  // const id = req.body.token;
+  const body = req.body;
   const tokenUserId = req.userId;
   const { password, avatar, ...inputs } = req.body;
+  console.log(id)
+  console.log(tokenUserId)
   
 
   if (id!== tokenUserId) {
