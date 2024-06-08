@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./homePage.scss";
 import SearchBar from "../../components/searchBar/SearchBar";
 import { AuthContext } from "../../context/AuthContext";
 
 function HomePage() {
+  useEffect
   const { currentUser } = useContext(AuthContext);
   console.log(currentUser)
   return (
