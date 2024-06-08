@@ -44,16 +44,15 @@ function NewPostPage() {
             bus: parseInt(inputs.bus),
             restaurant: parseInt(inputs.restaurant),
           },
-        },
-        {
-          headers: {
-            "Authorization": `Bearer ${currentUser.id}`,
-          },
-        }
+          token: localStorage.getItem("token")
+      }
       );
       navigate("/" + res.data.id);
     } catch (err) {
       alert(err.message);
+      if(err.response.message === "Token is not Valid!"){
+        localStorage.removeItem("token")
+      }
       console.log(err);
       setError(err);
     }
