@@ -8,18 +8,14 @@ import { Await, useLoaderData } from 'react-router-dom'
 
 function ListPage() {
   const data = useLoaderData()
-  // {
-  //   posts.map(item =>(
-  //     <Card key={item.id} item={item}/>
-  //   ))
-  // }
+
   return (
     <div className="listPage">
       <div className="listContainer">
         <div className="wrapper">
           <Filter/>
           <Suspense fallback={<p>Loading...</p>}>
-          <Await
+            <Await
               resolve={data.postResponse}
               errorElement={<p>Error loading posts!</p>}
             >
