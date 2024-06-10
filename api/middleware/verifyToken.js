@@ -1,7 +1,16 @@
 import jwt from "jsonwebtoken";
 
 export const verifyToken = (req, res, next) => {
-  const token = req.body.token;
+  // const token = req.body.token;
+  // console.log(token)
+  const authHeader = req.headers.authorization;
+  console.log(authHeader)
+  
+  if (!authHeader) {
+    return res.status(401).json({ message: "Not Authenticated!" });
+  }
+
+  const token = authHeader.split(' ')[1];
   console.log(token)
 
   if (!token) return res.status(401).json({ message: "Not Authenticated!" });
