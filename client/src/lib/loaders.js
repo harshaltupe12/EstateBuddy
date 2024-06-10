@@ -21,7 +21,7 @@ export const singlePageLoader = async ({ request, params }) => {
     });
   
     return res.data;
-  };
+};
 
 export const listPageLoader = async({request, params}) =>{
     const query = request.url.split("?")[1];
