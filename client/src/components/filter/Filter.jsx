@@ -8,11 +8,10 @@ function Filter() {
     type: searchParams.get("type") || "",
     city: searchParams.get("city") || "",
     property: searchParams.get("property") || "",
-    minPrice: searchParams.get("minPrice") || 0,
-    maxPrice: searchParams.get("maxPrice") || 1000000000,
-    bedroom: searchParams.get("bedroom") || 1,
+    minPrice: searchParams.get("minPrice") || "",
+    maxPrice: searchParams.get("maxPrice") || "",
+    bedroom: searchParams.get("bedroom") || " ",
   });
-
   const handleChange = (e) => {
     setQuery({
       ...query,
@@ -92,6 +91,7 @@ function Filter() {
             defaultValue={query.bedroom}
           />
         </div>
+        
         <button onClick={handleFilter}>
           <img src="/search.png" alt="" />
         </button>
