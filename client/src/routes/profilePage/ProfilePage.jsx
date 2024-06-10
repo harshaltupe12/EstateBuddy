@@ -1,12 +1,14 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Await, Link, useLoaderData, useNavigate } from "react-router-dom";
 import Chat from "../../components/chat/Chat";
 import List from "../../components/list/List";
 import apiRequest from "../../lib/apiRequest";
 import "./profilePage.scss";
-import { useContext } from "react";
+import { Suspense, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 function ProfilePage() {
+  const data = useLoaderData()
+
   const { currentUser, updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -53,7 +55,8 @@ function ProfilePage() {
           <div className="title">
             <h1>Saved List</h1>
           </div>
-          <List />
+          
+          <List/>
         </div>
       </div>
       <div className="chatContainer">
