@@ -15,8 +15,8 @@ const { currentUser } = useContext(AuthContext);
                 <span>Estate Buddy</span>
             </a>
             <Link to="/">Home</Link>
-            <Link to="/">About</Link>
-            <Link to="/">Contact</Link>
+            <Link to="/profile">About</Link>
+            <Link to="/list">Properties</Link>
             <Link to="/">Agents</Link>
         </div>
         <div className="right">
