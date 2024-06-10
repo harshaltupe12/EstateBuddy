@@ -18,6 +18,7 @@ function NewPostPage() {
     e.preventDefault();
     const formData = new FormData(e.target);
     const inputs = Object.fromEntries(formData);
+    const token = localStorage.getItem("token")
 
     try {
       const res = await apiRequest.post("/posts",{
@@ -44,8 +45,12 @@ function NewPostPage() {
             bus: parseInt(inputs.bus),
             restaurant: parseInt(inputs.restaurant),
           },
-          token: localStorage.getItem("token")
-      }
+          },
+          {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+          }
       );
       navigate("/" + res.data.id);
     } catch (err) {
