@@ -12,27 +12,31 @@ function ProfileUpdatePage() {
 
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("token");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
 
     const { username, email, password } = Object.fromEntries(formData);
-  
+
     try {
       const res = await apiRequest.put(`/users/${currentUser.id}`, {
-        username,
-        email,
-        password,
-        avatar: avatar[0],   
+          username,
+          email,
+          password,
+          avatar: avatar[0],
         },
-    );
-      updateUser(res.data.userInfo);
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      updateUser(res.data)
       navigate("/profile");
     } catch (err) {
       console.log(err);
-      if(err.response.message === "Token is not Valid!"){
-        localStorage.removeItem("token")
-      }
       setError(err.response.data.message);
     }
   };
