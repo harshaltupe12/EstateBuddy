@@ -75,7 +75,23 @@ nav{
                 background-color: #fece51;
                 cursor: pointer;
                 border: none;
-            }
+                position: relative;
+                
+                .notification{
+                  position: absolute;
+                  top: -8px;
+                  right: -8px;
+                  background-color: red;
+                  color: white;
+                  border-radius: 50%;
+                  width: 26px;
+                  height: 26px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+        
+              }
         }
         .register{
             align-items: center;
